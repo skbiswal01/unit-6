@@ -1,0 +1,43 @@
+What is immutability?
+ans - immutability is we cannot change the value or reassign value to a variable;
+In JavaScript, only objects and arrays are mutable, not primitive values.
+which in turn allows React to avoid expensive re-render operations when they are not required
+
+What does Object.freeze() do?
+ans The Object.freeze() method freezes an object. A frozen object can no longer be changed; freezing an object prevents new properties being added to it, existing properties being  removed, it prevents changing the object . 
+
+Why is immutability required by Redux?
+ans The main reason Redux is using immutability is that it doesn't have to traverse an object tree to check for the changes in every key value. Instead, it will only check the object's reference is changed or not in order to update DOM on state change.
+
+what is tree shaking?
+ans - tree shaking is a process of removing unused code from the bundle.
+Imagine your application as a tree. All the libraries, components & code represents leaves. All the unused code, imports & dead code represents the dead brown leaves. In order to clear dead leaves from trees you have to shake the tree to let them fall.
+
+By implementing tree shaking practices website performance will get improved and reduce bundle size. Tree shaking depends on the static structure of ES6 module syntax
+
+
+Explain redux to a 5 year old (ELI5) ?
+how is redux different from context API?
+what does useSelector do?
+What is immutability?
+Why do we need to spread the state in redux?
+What does Object.freeze() do?
+Why is immutability required by Redux?
+How does Redux use shallow equality checking?
+How well does Redux “scale” in terms of performance and architecture?
+How does Redux compare to the React Context API?
+FAQs of redux https://redux.js.org/faq/
+What is JSX?
+What is Conditional Rendering?
+What is tree-shaking ?
+What are some features of using webpack?
+What are Controlled and Uncontrolled components?
+What is flux architecture?
+What does React.useCallback do?
+What does React.memo mean?
+What is Higher-order Components?
+What are keys in React? Why are keys important?
+What is reconciliation?
+Explain life cycle diagram with hooks?
+What does the cleanup function in useEffect do?
+What are the rules of hooks?
