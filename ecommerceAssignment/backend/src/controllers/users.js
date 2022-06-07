@@ -62,4 +62,40 @@ router.patch("/:id/edit", async (req, res) => {
   }
 
 });
+
+router.get("/:id/addresses",async(req,res)=>{
+  try {
+      let user=await User.find({_id:{$eq:req.params.id}}).lean().exec()
+      res.status(200).send(user.Address)
+  } 
+  catch (error) {
+      res.send(400).send(error)
+  }
+})
+
+router.post("/:id/addresses/create",async(req,res)=>{
+  try {
+      let user=await User.find({_id:{$eq:req.params.id}}).lean().exec()
+         user.Address.push(req.body)
+       let Updated=  await User.findByIdAndUpdate(req.params.id,user,{new:true}).lean().exec()
+       res.status(200).send(Updated)
+
+
+  } 
+  catch (error) {
+      res.send(400).send(error)
+  }
+})
+
+router.post("/:id/addresses/idx/edit",async(req,res)=>{
+  try {
+      let user=await User.find({_id:{$eq:req.params.id}}).lean().exec()
+       
+
+
+  } 
+  catch (error) {
+      res.send(400).send(error)
+  }
+})
   module.exports = router;

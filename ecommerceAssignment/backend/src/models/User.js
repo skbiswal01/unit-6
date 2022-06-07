@@ -20,7 +20,11 @@ const userSchema = new mongoose.Schema({
         required:true,
         trim: true,
         
-    } 
+    },
+    Address : {
+        type : Array,
+        required : true
+    }
     
 });
 
