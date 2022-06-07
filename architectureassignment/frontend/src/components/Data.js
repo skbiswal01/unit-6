@@ -1,6 +1,5 @@
 import React from "react";
 import {useEffect, useState} from 'react';
-
 import axios from "axios";
 const Data = () => {
 
@@ -9,30 +8,60 @@ const Data = () => {
     const [sort, setSort] = useState("");
     const [fill, setFill] = useState("");
     const [ttlpages, setTtlPages] = useState();
-    // let {page, sort, fill} = useParams();
     
-    const fetchdata = async () => {
-      axios.get(`http://localhost:5000/cars?page=${page}`).then((res) => {setCar(res.data.cars); setTtlPages(res.data.totalPages)});
+    
+    const fetchdata = async (e) => {
+      let url = `http://localhost:5000/cars?page=${page}&filter=${fill}`;
+      axios.get(url).then((res) => {setCar(res.data.cars); setTtlPages(res.data.totalPages)});
+     console.log(url)
+     
     }
-    useEffect(() => {
+    useEffect((e) => {
        fetchdata();
        
-    }, [page]);
+      
+    }, [page, fill]);
     
     const handlePrevClick = () => {
       setPage(page-1);
-      fetchdata();
       
   }
 
   const handleNextClick = () => {
       setPage(page+1);
-      fetchdata();
+  }
+
+  const handleChange = (e) => {
+     e.preventDefault();
+      setSort(e.target.value);
+      console.log(sort);
   }
   return (
       
     <div >
-       
+       <div className="container flex justify-center mx-auto">
+          <div className="flex flex-row mx-auto border-2">
+            <label className="text-center align-middle" htmlFor="">By Company name - </label>
+           
+            <select name="" id="" onChange={(e)=>{setFill(e.target.value)}}>
+              <option value="">All</option>
+              <option value="Ford">Ford</option>
+              <option value="Pontiac">Pontiac</option>
+              <option value="Land Rover">Land Rover</option>
+              <option value="Panoz">Panoz</option>
+              <option value="Dodge">Dodge</option>
+              <option value="Honda">Honda</option>
+              <option value="Volkswagen">Volkswagen</option>
+            </select>
+          </div>
+          <div className="flex flex-row mx-auto border-2">
+          <label className="text-center align-middle" htmlFor="">By Model name - </label>
+          <input className="border border-black" type="text" onChange={handleChange}/>
+          </div>
+        </div>
+                 
+
+                 
              
        <div className="container px-5 py-16 mx-auto">
       <div className="flex flex-wrap -m-4">
